@@ -12,7 +12,7 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
     .state('home', {
       abstract: true,
       templateUrl: 'app/map/main.html',
-      controller: function(){console.log('main')},
+      controller: 'MainController',
       controllerAs: 'main',
     })
 
@@ -20,10 +20,10 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
       url: '/',
       views: {
         'sidebar': {
-          template: 'sidebar',
+          templateUrl: 'app/map/sidebar.html',
         },
         'container': {
-          template: 'map container',
+          templateUrl: 'app/map/container.html',
         }
       }
     });
