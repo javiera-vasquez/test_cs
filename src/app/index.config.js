@@ -1,4 +1,4 @@
-export function config ($logProvider, toastrConfig) {
+export function config ($logProvider, $mdThemingProvider, uiGmapGoogleMapApiProvider, toastrConfig) {
   'ngInject';
   // Enable log
   $logProvider.debugEnabled(true);
@@ -9,4 +9,17 @@ export function config ($logProvider, toastrConfig) {
   toastrConfig.positionClass = 'toast-top-right';
   toastrConfig.preventDuplicates = true;
   toastrConfig.progressBar = true;
+
+  // Theme setting
+  $mdThemingProvider.theme('default')
+    .primaryPalette('cyan')
+    .accentPalette('deep-orange')
+    .warnPalette('blue-grey');
+
+  uiGmapGoogleMapApiProvider.configure({
+    key: 'AIzaSyALUGz_xsMgKh55NqaqYZlIW9g4Wokl3Nw',
+    v: '3.22',
+    libraries: 'weather,geometry,visualization'
+  })
+
 }
