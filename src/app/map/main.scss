@@ -1,0 +1,15 @@
+#map {
+  .angular-google-map-container {
+    height: 918px;
+  }
+}
+
+#sidebar {
+  border-right: 1px solid rgba($black, .2);
+  button.add-marker {
+    color: $white;
+    padding: 8px 0;
+    margin: 15px 15px 25px;
+    i {vertical-align:middle;}
+  }
+}
