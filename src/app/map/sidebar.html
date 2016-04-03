@@ -1,9 +1,10 @@
 <div id="sidebar" window-height>
 
-  <md-list ng-cloak>
+  <md-list>
     <div layout="column">
-      <md-button class="md-raised md-accent add-marker">
-        <i class="material-icons">place</i> Agregar Marcador
+      <md-button class="md-raised md-accent add-marker" ng-click="main.addMarker()">
+        <md-icon class="material-icons">place</md-icon>
+        Agregar Marcador
       </md-button>
     </div>
 
@@ -11,11 +12,14 @@
       <md-subheader class="md-no-sticky">Mis marcadores</md-subheader>
     <md-divider></md-divider>
 
-    <md-list-item >
-      <p> asdf </p>
-      <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox>
+    <md-list-item ng-repeat="marker in main.markers" class="marker-list">
+      <p> {{ marker.window.title }} </p>
+      <md-button class="md-icon-button" aria-label="More" ng-click="main.removeMarker(marker)">
+        <md-icon class="material-icons">delete</md-icon>
+      </md-button>
     </md-list-item>
 
+    <md-divider></md-divider>
   </md-list>
 
 </div>
