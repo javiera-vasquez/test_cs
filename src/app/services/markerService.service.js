@@ -1,3 +1,4 @@
+/* global _:false */
 export function markerService($http, $q, $log) {
   'ngInject'
 

@@ -6,8 +6,6 @@ export function windowHeight($window, $log) {
 
     var windowContent = angular.element($window);
 
-    $log.debug('asdf');
-
     function setHeight() {
       var windowHeight = $window.innerHeight;
       element.css('height', windowHeight + 'px');

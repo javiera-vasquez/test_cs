@@ -19,7 +19,7 @@ export function config ($logProvider, $mdThemingProvider, uiGmapGoogleMapApiProv
   uiGmapGoogleMapApiProvider.configure({
     key: 'AIzaSyALUGz_xsMgKh55NqaqYZlIW9g4Wokl3Nw',
     v: '3.22',
-    libraries: 'weather,geometry,visualization'
+    libraries: 'places,geometry,visualization'
   })
 
 }
