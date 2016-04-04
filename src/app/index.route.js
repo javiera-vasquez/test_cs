@@ -1,4 +1,4 @@
-export function routerConfig ($stateProvider, $urlRouterProvider) {
+export function routerConfig($stateProvider, $urlRouterProvider) {
   'ngInject';
   $stateProvider
 
@@ -19,12 +19,33 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
           templateUrl: 'app/map/container.html'
         }
       }
+    })
+
+    .state('home.about', {
+      url: '/about',
+      views: {
+        'sidebar': {
+          templateUrl: 'app/map/sidebar.html'
+        },
+        'container': {
+          templateUrl: 'app/map/container.html'
+        }
+      },
+      onEnter: ['$mdDialog', '$state', function($mdDialog, $state) {
+
+        alert = $mdDialog.alert()
+          .title('Attention, ')
+          .textContent('This is an example of how easy dialogs can be!')
+          .ok('Close');
+        $mdDialog
+          .show(alert)
+          .then(() => {
+            $state.go('home.map');
+          });
+
+      }]
     });
 
-    // .sate('home.about', {
-    //   url: '/about',
-    //   onEnter: function(){}
-    // });
 
   $urlRouterProvider.otherwise('/');
 }
