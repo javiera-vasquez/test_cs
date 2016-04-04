@@ -9,8 +9,8 @@
   button.add-marker {
     color: $white;
     text-shadow: 0 1px 0 rgba($black, .25);
-    padding: 8px 0;
-    margin: 15px 15px 25px;
+    padding: 5px 0;
+    //margin: 15px 15px 25px;
     .material-icons {color: $white;}
   }
 }
@@ -18,4 +18,10 @@
 .marker-list {
   font-size: 12px;
   margin-left: 15px;
+}
+
+md-input-container {
+  width: 100%;
+  margin: 5px 0;
+  padding-bottom: 0px;
 }

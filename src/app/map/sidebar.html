@@ -2,21 +2,23 @@
 
   <md-list>
     <md-content layout-gt-sm="column" layout-padding>
-      <md-button class="md-raised md-accent add-marker" ng-click="main.addMarker()">
+      <md-button class="md-raised md-accent add-marker" ng-click="main.show=!main.show">
         <md-icon class="material-icons">place</md-icon>
         Agregar Marcador
       </md-button>
     </md-content>
 
-    <md-content layout-gt-sm="column" layout-padding ng-hide="addMarker()">
-      <div class="animated fadeInDown">
+    <md-content layout-gt-sm="column" layout-padding ng-hide="!main.show">
+      <md-divider></md-divider>
+      <br/>
+      <div class="animated" ng-class="main.show == true ? 'fadeInDown' : 'fadeOutDown'">
         <md-input-container>
           <label>Dirección</label>
-          <input ng-model="user.title" type="text" id="searchbox" placeholder="">
+          <input ng-model="main.location.direction" type="text" id="searchbox" placeholder="">
         </md-input-container>
         <md-input-container>
           <label>Nombre</label>
-          <input ng-model="user.email" type="text" placeholder="">
+          <input ng-model="main.location.name" type="text" placeholder="">
         </md-input-container>
         <md-content layout-gt-sm="column">
           <md-button class="md-raised md-primary add-marker" ng-click="main.addMarker()">
@@ -30,9 +32,9 @@
     <md-subheader class="md-no-sticky">Mis marcadores</md-subheader>
     <md-divider></md-divider>
 
-    <md-list-item ng-repeat="marker in main.markers" class="marker-list">
+    <md-list-item ng-repeat="marker in main.markers" class="secondary-button-padding marker-list">
       <p> {{ marker.window.title }} </p>
-      <md-button class="md-icon-button" aria-label="More" ng-click="main.removeMarker(marker)">
+      <md-button class="md-icon-button md-secondary" aria-label="More" ng-click="main.removeMarker(marker)">
         <md-icon class="material-icons">delete</md-icon>
       </md-button>
     </md-list-item>
