@@ -21,16 +21,8 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
       }
     })
 
-    .state('home.about', {
+    .state('home.map.about', {
       url: '/about',
-      views: {
-        'sidebar': {
-          templateUrl: 'app/map/sidebar.html'
-        },
-        'container': {
-          templateUrl: 'app/map/container.html'
-        }
-      },
       onEnter: ['$mdDialog', '$state', function($mdDialog, $state) {
 
         alert = $mdDialog.alert()
