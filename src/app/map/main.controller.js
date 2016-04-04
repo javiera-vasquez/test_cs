@@ -11,6 +11,7 @@ export class MainController {
     mv.removeMarker = removeMarker;
     mv.mapConfig = mapConfig();
     mv.pageTitle = 'Gmaps markers';
+    mv.show = false;
 
     activate();
 
@@ -23,20 +24,43 @@ export class MainController {
         })
       }).then(() => {
         getSearch();
-        getPoint();
+        setPoint();
       });
     }
 
     function addMarker() {
-      // var asdf = { "id": "4", "coords": { "latitude": "-32.4179935", "longitude": "-70.6063901" }, "window": { "title": "Costanera Centers" } };
-      //markerService.addMarker(mv.markers, asdf);
+      let len = mv.markers.length;
+      let marker = {
+        id: len,
+        coords: {
+          latitude: mv.marker.coords.latitude,
+          longitude: mv.marker.coords.longitude
+        },
+        window: {
+          title: mv.location.name
+        }
+      };
+
+      markerService.addMarker(mv.markers, marker);
+
+      mv.location = {
+        name: '',
+        direction: ''
+      };
+
+      mv.marker = {
+        id: 0,
+        coords: {
+          latitude: 0,
+          longitude: 0
+        }
+      };
     }
 
     function removeMarker(marker) {
       $log.debug(marker);
       markerService.removeMarker(mv.markers, marker);
     }
-
 
     function getMarkers() {
       return markerService.getMarkers().then((res) => {
@@ -67,12 +91,15 @@ export class MainController {
 
         $log.debug(searchBox, lat, len);
 
-        mv.marker.coords = {
-          latitude: lat,
-          longitude: len
-        };
+        mv.map = {
+          zoom: 15,
+          center: {
+            latitude: lat,
+            longitude: len
+          }
+        }
 
-        mv.map.center = {
+        mv.marker.coords = {
           latitude: lat,
           longitude: len
         };
@@ -80,16 +107,15 @@ export class MainController {
       });
     }
 
-    function getPoint() {
+    function setPoint() {
       return mv.marker = {
         id: 0,
         coords: {},
         options: { draggable: true },
         events: {
-          dragend: function(marker, eventName, args) {
-            $log.log('marker dragend');
-            var lat = marker.getPosition().lat();
-            var lon = marker.getPosition().lng();
+          dragend: (marker) => {
+            let lat = marker.getPosition().lat();
+            let lon = marker.getPosition().lng();
             $log.log(lat);
             $log.log(lon);
           }
