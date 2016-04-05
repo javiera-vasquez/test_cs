@@ -22,7 +22,7 @@ export function routerConfig($stateProvider, $urlRouterProvider) {
     })
 
     .state('home.map.about', {
-      url: '/about',
+      url: 'about',
       onEnter: ['$mdDialog', '$state', function($mdDialog, $state) {
 
         alert = $mdDialog.alert()
